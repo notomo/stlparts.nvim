@@ -1,0 +1,61 @@
+*stlparts.nvim.txt*
+
+==============================================================================
+Lua module: stlparts                                  *stlparts.nvim-stlparts*
+
+build({window_id})                                          *stlparts.build()*
+  Returns a 'statusline' string
+
+  Parameters: ~
+    {window_id} (number|nil) window id
+
+  Return: ~
+    (string) statusline expression string
+
+component({name})                                       *stlparts.component()*
+  Returns a component function
+
+  Parameters: ~
+    {name} (string) component name
+
+  Return: ~
+    (function) component function
+
+set_root({component})                                    *stlparts.set_root()*
+  Set a root component
+
+  Parameters: ~
+    {component} (table) 
+
+  Return: ~
+    (function) component function
+
+==============================================================================
+EXAMPLES                                              *stlparts.nvim-EXAMPLES*
+
+>
+  local stlparts = require("stlparts")
+
+  local path = function()
+    return vim.fn.expand("%:p:~")
+  end
+
+  local column = function()
+    return vim.fn.col(".")
+  end
+
+  local filetype = function()
+    return vim.bo.filetype
+  end
+
+  local Padding = stlparts.component("padding")
+  local Separate = stlparts.component("separate")
+  local List = stlparts.component("list")
+
+  stlparts.set_root(Padding(Separate(List({ path }), List({ column, filetype }))))
+
+  vim.opt.statusline = [[%!v:lua.require("stlparts").build()]]
+<
+
+==============================================================================
+vim:tw=78:ts=8:ft=help
