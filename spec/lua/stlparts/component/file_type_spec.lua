@@ -1,4 +1,4 @@
-local helper = require("stlparts.lib.testlib.helper")
+local helper = require("stlparts.test.helper")
 local stlparts = helper.require("stlparts")
 
 describe("file_type component", function()

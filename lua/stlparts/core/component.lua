@@ -25,7 +25,7 @@ function M.build(ctx, component_or_name)
 end
 
 function M.require(name)
-  return require("stlparts.lib.module").find("stlparts.component." .. name)
+  return require("stlparts.vendor.misclib.module").find("stlparts.component." .. name)
 end
 
 return M
