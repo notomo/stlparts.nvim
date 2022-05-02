@@ -17,7 +17,7 @@ end
 function M.build(self, ctx)
   local str = self._component:build(ctx)
   local width = vim.fn.strwidth(str)
-  local max_width = vim.api.nvim_win_get_width(ctx.window_id)
+  local max_width = ctx:window_width()
   if max_width < width then
     return ".." .. vim.fn.strpart(str, width - max_width + self._ellipsis_length)
   end
