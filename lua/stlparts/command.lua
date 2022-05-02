@@ -7,11 +7,11 @@ function ReturnValue.build(window_id)
 end
 
 function ReturnValue.component(name)
-  local Component = require("stlparts.core.component").require(name)
-  if not Component then
-    return nil, "not found: " .. name
+  local f, err = require("stlparts.core.component").require_as_function(name)
+  if err then
+    return nil, err
   end
-  return Component.new
+  return f
 end
 
 local ShowError = require("stlparts.vendor.misclib.error_handler").for_show_error()
