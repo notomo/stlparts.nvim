@@ -7,7 +7,10 @@ vim.o.runtimepath = vim.fn.getcwd() .. "," .. vim.o.runtimepath
 dofile(example_path)
 
 require("genvdoc").generate(plugin_name .. ".nvim", {
-  sources = { { name = "lua", pattern = ("lua/%s/init.lua"):format(plugin_name) } },
+  sources = {
+    { name = "lua", pattern = ("lua/%s/init.lua"):format(plugin_name) },
+    { name = "lua", pattern = ("lua/%s/component/*.lua"):format(plugin_name) },
+  },
   chapters = {
     {
       name = function(group)
@@ -17,7 +20,40 @@ require("genvdoc").generate(plugin_name .. ".nvim", {
         if not node.declaration then
           return nil
         end
+        if node.declaration.module:match("%.component%.") then
+          return nil
+        end
         return node.declaration.module
+      end,
+    },
+    {
+      name = function()
+        return "COMPONENTS"
+      end,
+      group = function(node)
+        if not node.declaration then
+          return nil
+        end
+        if not node.declaration.module:match("%.component%.") then
+          return nil
+        end
+        return "components"
+      end,
+    },
+    {
+      name = "TYPES",
+      body = function(ctx)
+        return util.sections(ctx, {
+          {
+            name = "Component",
+            tag_name = "types-component",
+            text = [[
+Type is one of the following:
+- function: returns string
+- table: {new = `component constructor`, build = `function returns string`}
+]],
+          },
+        })
       end,
     },
     {

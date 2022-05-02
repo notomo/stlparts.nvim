@@ -1,6 +1,9 @@
 local M = {}
 M.__index = M
 
+--- Trancate left string by window width.
+--- @param component function|table: |stlparts.nvim-types-component|
+--- @return table: |stlparts.nvim-types-component|
 function M.new(component)
   local ellipsis = ".."
   local tbl = {

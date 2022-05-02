@@ -1,6 +1,9 @@
 local M = {}
 M.__index = M
 
+--- Render if the window is not floating window.
+--- @param component function|table: |stlparts.nvim-types-component|
+--- @return table: |stlparts.nvim-types-component|
 function M.new(component)
   local tbl = {
     _is_normal_window = function(window_id)

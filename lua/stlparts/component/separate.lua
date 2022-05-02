@@ -1,6 +1,10 @@
 local M = {}
 M.__index = M
 
+--- Separate by '%='. see |statusline|.
+--- @param left function|table: |stlparts.nvim-types-component|
+--- @param right function|table: |stlparts.nvim-types-component|
+--- @return table: |stlparts.nvim-types-component|
 function M.new(left, right)
   local tbl = {
     _left = require("stlparts.core.component").get(left),

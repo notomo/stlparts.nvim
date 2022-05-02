@@ -1,6 +1,9 @@
 local M = {}
 M.__index = M
 
+--- Listing components.
+--- @param components table: list of |stlparts.nvim-types-component|
+--- @return table: |stlparts.nvim-types-component|
 function M.new(components)
   local tbl = {
     _components = vim.tbl_map(function(c)

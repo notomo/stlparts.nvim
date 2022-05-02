@@ -1,6 +1,10 @@
 local M = {}
 M.__index = M
 
+--- Switch by whether mapping has filetype matched with the buffer's filetype.
+--- @param mapping function|table: |stlparts.nvim-types-component|
+--- @param default function|table: |stlparts.nvim-types-component|
+--- @return table: |stlparts.nvim-types-component|
 function M.new(mapping, default)
   local tbl = {
     _mapping = vim.tbl_map(function(c)

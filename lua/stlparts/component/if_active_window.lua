@@ -1,6 +1,10 @@
 local M = {}
 M.__index = M
 
+--- Switch by whether the window is active.
+--- @param active function|table: |stlparts.nvim-types-component|
+--- @param inactive function|table: |stlparts.nvim-types-component|
+--- @return table: |stlparts.nvim-types-component|
 function M.new(active, inactive)
   local tbl = {
     _is_active = function(window_id)

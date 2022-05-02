@@ -4,7 +4,7 @@
 Lua module: stlparts                                  *stlparts.nvim-stlparts*
 
 build({window_id})                                          *stlparts.build()*
-  Returns a 'statusline' string
+  Returns a 'statusline' string.
 
   Parameters: ~
     {window_id} (number|nil) window id
@@ -13,22 +13,99 @@ build({window_id})                                          *stlparts.build()*
     (string) statusline expression string
 
 component({name})                                       *stlparts.component()*
-  Returns a component function
+  Returns a component function.
 
   Parameters: ~
     {name} (string) component name
 
   Return: ~
-    (function) component function
+    (function) component constructor function
 
 set_root({component})                                    *stlparts.set_root()*
-  Set a root component
+  Set a root component.
 
   Parameters: ~
-    {component} (table) 
+    {component} (table|function) |stlparts.nvim-types-component|
+
+==============================================================================
+COMPONENTS                                          *stlparts.nvim-components*
+
+new({mapping}, {default})                 *stlparts.component.file_type.new()*
+  Switch by whether mapping has filetype matched with the buffer's filetype.
+
+  Parameters: ~
+    {mapping} (function|table) |stlparts.nvim-types-component|
+    {default} (function|table) |stlparts.nvim-types-component|
 
   Return: ~
-    (function) component function
+    (table) |stlparts.nvim-types-component|
+
+new({active}, {inactive})          *stlparts.component.if_active_window.new()*
+  Switch by whether the window is active.
+
+  Parameters: ~
+    {active} (function|table) |stlparts.nvim-types-component|
+    {inactive} (function|table) |stlparts.nvim-types-component|
+
+  Return: ~
+    (table) |stlparts.nvim-types-component|
+
+new({component})                   *stlparts.component.if_normal_window.new()*
+  Render if the window is not floating window.
+
+  Parameters: ~
+    {component} (function|table) |stlparts.nvim-types-component|
+
+  Return: ~
+    (table) |stlparts.nvim-types-component|
+
+new({components})                              *stlparts.component.list.new()*
+  Listing components.
+
+  Parameters: ~
+    {components} (table) list of |stlparts.nvim-types-component|
+
+  Return: ~
+    (table) |stlparts.nvim-types-component|
+
+new({component}, {opts})                    *stlparts.component.padding.new()*
+  Add padding.
+
+  Parameters: ~
+    {component} (function|table) |stlparts.nvim-types-component|
+    {opts} (table|nil) default: {left = 1, right = 1}
+
+  Return: ~
+    (table) |stlparts.nvim-types-component|
+
+new({left}, {right})                       *stlparts.component.separate.new()*
+  Separate by '%='. see |statusline|.
+
+  Parameters: ~
+    {left} (function|table) |stlparts.nvim-types-component|
+    {right} (function|table) |stlparts.nvim-types-component|
+
+  Return: ~
+    (table) |stlparts.nvim-types-component|
+
+new({component})                      *stlparts.component.trancate_left.new()*
+  Trancate left string by window width.
+
+  Parameters: ~
+    {component} (function|table) |stlparts.nvim-types-component|
+
+  Return: ~
+    (table) |stlparts.nvim-types-component|
+
+==============================================================================
+TYPES                                                    *stlparts.nvim-TYPES*
+
+Component                                      *stlparts.nvim-types-component*
+
+Type is one of the following:
+- function: returns string
+- table: {new = `component constructor`, build = `function returns string`}
+
 
 ==============================================================================
 EXAMPLES                                              *stlparts.nvim-EXAMPLES*
