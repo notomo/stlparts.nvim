@@ -3,8 +3,8 @@ M.__index = M
 
 function M.new(mapping, default)
   local tbl = {
-    _mapping = vim.tbl_map(function(component_or_name)
-      return require("stlparts.core.component").get(component_or_name)
+    _mapping = vim.tbl_map(function(c)
+      return require("stlparts.core.component").get(c)
     end, mapping),
     _default = require("stlparts.core.component").get(default),
   }

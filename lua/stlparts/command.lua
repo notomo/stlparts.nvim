@@ -7,7 +7,6 @@ function ReturnValue.build(window_id)
 end
 
 function ReturnValue.component(name)
-  vim.validate({ name = { name, "string" } })
   local Component = require("stlparts.core.component").require(name)
   if not Component then
     return nil, "not found: " .. name

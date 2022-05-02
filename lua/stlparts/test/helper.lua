@@ -1,13 +1,13 @@
 local plugin_name = vim.split((...):gsub("%.", "/"), "/", true)[1]
-local M = require("vusted.helper")
+local helper = require("vusted.helper")
 
-M.root = M.find_plugin_root(plugin_name)
+helper.root = helper.find_plugin_root(plugin_name)
 
-function M.before_each() end
+function helper.before_each() end
 
-function M.after_each()
+function helper.after_each()
   vim.cmd("silent %bwipeout!")
-  M.cleanup_loaded_modules(plugin_name)
+  helper.cleanup_loaded_modules(plugin_name)
   print(" ")
 end
 
@@ -17,4 +17,4 @@ asserts.create("statusline"):register_eq(function(str, opts)
   return vim.api.nvim_eval_statusline(str, opts).str
 end)
 
-return M
+return helper

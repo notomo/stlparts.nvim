@@ -5,7 +5,11 @@ function M.new(component, opts)
   opts = opts or {}
   local left = (" "):rep(opts.left or 1)
   local right = (" "):rep(opts.right or 1)
-  local tbl = { _component = component, _left = left, _right = right }
+  local tbl = {
+    _component = component,
+    _left = left,
+    _right = right,
+  }
   return setmetatable(tbl, M)
 end
 

@@ -1,11 +1,12 @@
 local M = {}
 M.__index = M
 
-function M.new(component_or_names)
-  local components = vim.tbl_map(function(component_or_name)
-    return require("stlparts.core.component").get(component_or_name)
-  end, component_or_names)
-  local tbl = { _components = components }
+function M.new(components)
+  local tbl = {
+    _components = vim.tbl_map(function(c)
+      return require("stlparts.core.component").get(c)
+    end, components),
+  }
   return setmetatable(tbl, M)
 end
 
