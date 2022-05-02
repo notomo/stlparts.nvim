@@ -103,8 +103,8 @@ TYPES                                                    *stlparts.nvim-TYPES*
 Component                                      *stlparts.nvim-types-component*
 
 Type is one of the following:
-- function: returns string
-- table: {new = `component constructor`, build = `function returns string`}
+- (function): returns string
+- (table): {new = `component constructor`, build = `function returns string`}
 
 
 ==============================================================================

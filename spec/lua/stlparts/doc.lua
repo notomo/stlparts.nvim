@@ -49,8 +49,8 @@ require("genvdoc").generate(plugin_name .. ".nvim", {
             tag_name = "types-component",
             text = [[
 Type is one of the following:
-- function: returns string
-- table: {new = `component constructor`, build = `function returns string`}
+- (function): returns string
+- (table): {new = `component constructor`, build = `function returns string`}
 ]],
           },
         })
@@ -72,8 +72,6 @@ local gen_readme = function()
 
   local content = ([[
 # stlparts.nvim
-
-WIP
 
 statusline components.
 

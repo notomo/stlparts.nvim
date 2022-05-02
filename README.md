@@ -1,7 +1,5 @@
 # stlparts.nvim
 
-WIP
-
 statusline components.
 
 ## Example
