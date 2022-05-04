@@ -6,7 +6,7 @@ helper.root = helper.find_plugin_root(plugin_name)
 function helper.before_each() end
 
 function helper.after_each()
-  vim.cmd("silent %bwipeout!")
+  helper.cleanup()
   helper.cleanup_loaded_modules(plugin_name)
   print(" ")
 end
