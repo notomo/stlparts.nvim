@@ -7,7 +7,6 @@ describe("stlparts.build()", function()
 
   it("returns statusline string", function()
     vim.cmd([[edit test]])
-    vim.bo.filetype = "lua"
 
     local Padding = stlparts.component("padding")
     local Separate = stlparts.component("separate")
@@ -21,12 +20,12 @@ describe("stlparts.build()", function()
       }),
       List({
         function()
-          return vim.bo.filetype
+          return "str"
         end,
       })
     )))
 
     local str = stlparts.build()
-    assert.statusline(str, { fillchar = " ", maxwidth = 12 }, " test   lua ")
+    assert.statusline(str, { fillchar = " ", maxwidth = 12 }, " test   str ")
   end)
 end)

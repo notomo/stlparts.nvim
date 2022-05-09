@@ -8,6 +8,13 @@ function M.get(component)
   if typ == "function" then
     return { build = component }
   end
+  if typ == "string" then
+    return {
+      build = function(_)
+        return component
+      end,
+    }
+  end
   error("unexpected type: " .. typ)
 end
 
