@@ -10,7 +10,7 @@ function M.new(component, opts)
   local left = (" "):rep(opts.left or 1)
   local right = (" "):rep(opts.right or 1)
   local tbl = {
-    _component = component,
+    _component = require("stlparts.core.component").get(component),
     _left = left,
     _right = right,
   }
