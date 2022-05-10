@@ -12,20 +12,23 @@ describe("stlparts.build()", function()
     local Separate = stlparts.component("separate")
     local List = stlparts.component("list")
 
-    stlparts.set_root(Padding(Separate(
-      List({
-        function()
-          return vim.fn.expand("%")
-        end,
-      }),
-      List({
-        function()
-          return "str"
-        end,
-      })
-    )))
+    stlparts.set(
+      "default",
+      Padding(Separate(
+        List({
+          function()
+            return vim.fn.expand("%")
+          end,
+        }),
+        List({
+          function()
+            return "str"
+          end,
+        })
+      ))
+    )
 
-    local str = stlparts.build()
+    local str = stlparts.build("default")
     assert.statusline(str, { fillchar = " ", maxwidth = 12 }, " test   str ")
   end)
 end)

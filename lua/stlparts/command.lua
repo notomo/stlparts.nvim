@@ -1,8 +1,9 @@
 local ReturnValue = require("stlparts.vendor.misclib.error_handler").for_return_value()
 
-function ReturnValue.build(window_id)
-  local ctx = require("stlparts.core.context").new(window_id)
-  local component = require("stlparts.core.setting").state().root
+function ReturnValue.build(name, opts)
+  opts = opts or {}
+  local ctx = require("stlparts.core.context").new(opts.window_id, opts.hl_group)
+  local component = require("stlparts.core.setting").state()[name]
   return require("stlparts.core.component").build(ctx, component)
 end
 
@@ -16,8 +17,8 @@ end
 
 local ShowError = require("stlparts.vendor.misclib.error_handler").for_show_error()
 
-function ShowError.set_root(component)
-  return require("stlparts.core.setting").set({ root = component })
+function ShowError.set(name, component)
+  return require("stlparts.core.setting").set({ [name] = component })
 end
 
 return vim.tbl_extend("force", ReturnValue:methods(), ShowError:methods())

@@ -1,8 +1,11 @@
 local M = {}
 M.__index = M
 
-function M.new(window_id)
-  local tbl = { window_id = window_id or vim.api.nvim_get_current_win() }
+function M.new(window_id, hl_group)
+  local tbl = {
+    window_id = window_id or vim.api.nvim_get_current_win(),
+    hl_group = hl_group or "StatusLine",
+  }
   return setmetatable(tbl, M)
 end
 
@@ -11,6 +14,10 @@ function M.window_width(self)
     return vim.o.columns
   end
   return vim.api.nvim_win_get_width(self.window_id)
+end
+
+function M.highlight(self, hl_group)
+  return M.new(self.window_id, hl_group)
 end
 
 return M

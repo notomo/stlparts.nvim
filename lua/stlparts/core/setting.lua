@@ -1,10 +1,6 @@
 local M = {}
 
-M.default = {
-  root = function()
-    return ""
-  end,
-}
+M.default = {}
 
 local _state = vim.deepcopy(M.default)
 function M.state()
@@ -12,7 +8,7 @@ function M.state()
 end
 
 function M.set(setting)
-  _state = vim.tbl_deep_extend("force", M.default, setting)
+  _state = vim.tbl_extend("force", _state, setting)
 end
 
 return M

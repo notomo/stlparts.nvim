@@ -9,28 +9,34 @@ describe("file_type component", function()
     vim.cmd([[edit test]])
     vim.bo.filetype = "lua"
 
-    stlparts.set_root(stlparts.component("file_type")({
-      lua = function()
-        return "ok"
-      end,
-    }, function()
-      return "ng"
-    end))
+    stlparts.set(
+      "default",
+      stlparts.component("file_type")({
+        lua = function()
+          return "ok"
+        end,
+      }, function()
+        return "ng"
+      end)
+    )
 
-    local str = stlparts.build()
+    local str = stlparts.build("default")
     assert.statusline(str, {}, "ok")
   end)
 
   it("can build with non-specified filetype", function()
-    stlparts.set_root(stlparts.component("file_type")({
-      lua = function()
-        return "ng"
-      end,
-    }, function()
-      return "ok"
-    end))
+    stlparts.set(
+      "default",
+      stlparts.component("file_type")({
+        lua = function()
+          return "ng"
+        end,
+      }, function()
+        return "ok"
+      end)
+    )
 
-    local str = stlparts.build()
+    local str = stlparts.build("default")
     assert.statusline(str, {}, "ok")
   end)
 end)

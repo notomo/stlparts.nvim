@@ -3,11 +3,12 @@
 ==============================================================================
 Lua module: stlparts                                  *stlparts.nvim-stlparts*
 
-build({window_id})                                          *stlparts.build()*
+build({name}, {opts})                                       *stlparts.build()*
   Returns a 'statusline' string.
 
   Parameters: ~
-    {window_id} (number|nil) window id
+    {name} (string) registered name by |stlparts.set()|
+    {opts} (table|nil) {window_id = nil, hl_group = "StatusLine"}
 
   Return: ~
     (string) statusline expression string
@@ -21,14 +22,34 @@ component({name})                                       *stlparts.component()*
   Return: ~
     (function) component constructor function
 
-set_root({component})                                    *stlparts.set_root()*
-  Set a root component.
+set({name}, {component})                                      *stlparts.set()*
+  Set a component.
 
   Parameters: ~
+    {name} (string) use to refer from |stlparts.build()|
     {component} (table|function) |stlparts.nvim-types-component|
 
 ==============================================================================
 COMPONENTS                                          *stlparts.nvim-components*
+
+new({create_component})                     *stlparts.component.builder.new()*
+  Build components dynamically.
+
+  Parameters: ~
+    {create_component} (function) |stlparts.nvim-types-component|
+
+  Return: ~
+    (table) |stlparts.nvim-types-component|
+
+new({hl_group}, {component})      *stlparts.component.default_highlight.new()*
+  Set default highlight group to use in children components.
+
+  Parameters: ~
+    {hl_group} (string) highlight group
+    {component} (function|table) |stlparts.nvim-types-component|
+
+  Return: ~
+    (table) |stlparts.nvim-types-component|
 
 new({mapping}, {default})                 *stlparts.component.file_type.new()*
   Switch by whether mapping has filetype matched with the buffer's filetype.
@@ -36,6 +57,16 @@ new({mapping}, {default})                 *stlparts.component.file_type.new()*
   Parameters: ~
     {mapping} (function|table) |stlparts.nvim-types-component|
     {default} (function|table) |stlparts.nvim-types-component|
+
+  Return: ~
+    (table) |stlparts.nvim-types-component|
+
+new({hl_group}, {component})              *stlparts.component.highlight.new()*
+  Highlight component.
+
+  Parameters: ~
+    {hl_group} (string) highlight group
+    {component} (function|table) |stlparts.nvim-types-component|
 
   Return: ~
     (table) |stlparts.nvim-types-component|
@@ -59,11 +90,12 @@ new({component})                   *stlparts.component.if_normal_window.new()*
   Return: ~
     (table) |stlparts.nvim-types-component|
 
-new({components})                              *stlparts.component.list.new()*
+new({components}, {opts})                      *stlparts.component.list.new()*
   Listing components.
 
   Parameters: ~
     {components} (table) list of |stlparts.nvim-types-component|
+    {opts} (table|nil) default: {separator = " "}
 
   Return: ~
     (table) |stlparts.nvim-types-component|
@@ -84,6 +116,16 @@ new({left}, {right})                       *stlparts.component.separate.new()*
   Parameters: ~
     {left} (function|table) |stlparts.nvim-types-component|
     {right} (function|table) |stlparts.nvim-types-component|
+
+  Return: ~
+    (table) |stlparts.nvim-types-component|
+
+new({tab_number}, {component})                  *stlparts.component.tab.new()*
+  Make tab component that can be used in tabline.
+
+  Parameters: ~
+    {tab_number} (number) tab number
+    {component} (function|table) |stlparts.nvim-types-component|
 
   Return: ~
     (table) |stlparts.nvim-types-component|
@@ -129,9 +171,9 @@ EXAMPLES                                              *stlparts.nvim-EXAMPLES*
   local Separate = stlparts.component("separate")
   local List = stlparts.component("list")
 
-  stlparts.set_root(Padding(Separate(List({ path }), List({ column, filetype }))))
+  stlparts.set("default", Padding(Separate(List({ path }), List({ column, filetype }))))
 
-  vim.opt.statusline = [[%!v:lua.require("stlparts").build()]]
+  vim.opt.statusline = [[%!v:lua.require("stlparts").build("default")]]
 <
 
 ==============================================================================
