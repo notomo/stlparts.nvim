@@ -16,6 +16,10 @@ function M.window_width(self)
   return vim.api.nvim_win_get_width(self.window_id)
 end
 
+function M.window(self, window_id)
+  return M.new(window_id, self.hl_group)
+end
+
 function M.highlight(self, hl_group)
   return M.new(self.window_id, hl_group)
 end

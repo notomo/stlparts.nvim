@@ -120,11 +120,11 @@ new({left}, {right})                       *stlparts.component.separate.new()*
   Return: ~
     (table) |stlparts.nvim-types-component|
 
-new({tab_number}, {component})                  *stlparts.component.tab.new()*
+new({tabpage}, {component})                     *stlparts.component.tab.new()*
   Make tab component that can be used in tabline.
 
   Parameters: ~
-    {tab_number} (number) tab number
+    {tabpage} (number) tabpage handle, or 0 for current tabpage
     {component} (function|table) |stlparts.nvim-types-component|
 
   Return: ~
