@@ -71,25 +71,6 @@ new({hl_group}, {component})              *stlparts.component.highlight.new()*
   Return: ~
     (table) |stlparts.nvim-types-component|
 
-new({active}, {inactive})          *stlparts.component.if_active_window.new()*
-  Switch by whether the window is active.
-
-  Parameters: ~
-    {active} (function|table) |stlparts.nvim-types-component|
-    {inactive} (function|table) |stlparts.nvim-types-component|
-
-  Return: ~
-    (table) |stlparts.nvim-types-component|
-
-new({component})                   *stlparts.component.if_normal_window.new()*
-  Render if the window is not floating window.
-
-  Parameters: ~
-    {component} (function|table) |stlparts.nvim-types-component|
-
-  Return: ~
-    (table) |stlparts.nvim-types-component|
-
 new({components}, {opts})                      *stlparts.component.list.new()*
   Listing components.
 
