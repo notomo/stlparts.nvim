@@ -6,7 +6,7 @@ describe("stlparts.build()", function()
   after_each(helper.after_each)
 
   it("returns statusline string", function()
-    vim.cmd([[edit test]])
+    vim.cmd.edit("test")
 
     local Padding = stlparts.component("padding")
     local Separate = stlparts.component("separate")

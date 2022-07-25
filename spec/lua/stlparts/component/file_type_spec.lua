@@ -6,7 +6,7 @@ describe("file_type component", function()
   after_each(helper.after_each)
 
   it("can build with specified filetype", function()
-    vim.cmd([[edit test]])
+    vim.cmd.edit("test")
     vim.bo.filetype = "lua"
 
     stlparts.set(
