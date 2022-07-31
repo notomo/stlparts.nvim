@@ -6,7 +6,11 @@ function M.get(component)
     return component
   end
   if typ == "function" then
-    return { build = component }
+    return {
+      build = function(_, ctx)
+        return component(ctx)
+      end,
+    }
   end
   if typ == "string" then
     return {
