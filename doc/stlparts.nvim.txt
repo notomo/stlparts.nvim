@@ -134,7 +134,7 @@ Type is one of the following:
 ==============================================================================
 EXAMPLES                                              *stlparts.nvim-EXAMPLES*
 
->
+>lua
   local stlparts = require("stlparts")
 
   local path = function()
