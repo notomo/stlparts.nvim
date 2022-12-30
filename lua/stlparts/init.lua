@@ -12,7 +12,11 @@ end
 --- @param name string: component name
 --- @return function: component constructor function
 function M.component(name)
-  return require("stlparts.command").component(name)
+  local f, err = require("stlparts.command").component(name)
+  if err then
+    error("[stlparts] " .. err, 0)
+  end
+  return f
 end
 
 --- Set a component.
