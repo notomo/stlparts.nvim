@@ -10,22 +10,17 @@ describe("stlparts.build()", function()
 
     local Padding = stlparts.component("padding")
     local Separate = stlparts.component("separate")
-    local List = stlparts.component("list")
 
     stlparts.set(
       "default",
-      Padding(Separate(
-        List({
-          function()
-            return vim.fn.expand("%")
-          end,
-        }),
-        List({
-          function()
-            return "str"
-          end,
-        })
-      ))
+      Padding(Separate(function()
+        return vim.fn.expand("%")
+      end, {
+        function()
+          return "st"
+        end,
+        "r",
+      }))
     )
 
     local str = stlparts.build("default")

@@ -1,10 +1,18 @@
+local vim = vim
+
 local M = {}
 
 function M.get(component)
+  if vim.tbl_islist(component) then
+    return M.require_as_function("list")(component, { separator = "" })
+  end
+
   local typ = type(component)
+
   if typ == "table" then
     return component
   end
+
   if typ == "function" then
     return {
       build = function(_, ctx)
@@ -12,6 +20,7 @@ function M.get(component)
       end,
     }
   end
+
   if typ == "string" then
     return {
       build = function(_)
@@ -19,6 +28,7 @@ function M.get(component)
       end,
     }
   end
+
   error("unexpected type: " .. typ)
 end
 

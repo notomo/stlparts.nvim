@@ -14,8 +14,7 @@ end
 
 local Padding = stlparts.component("padding")
 local Separate = stlparts.component("separate")
-local List = stlparts.component("list")
 
-stlparts.set("default", Padding(Separate(List({ path }), List({ column, filetype }))))
+stlparts.set("default", Padding(Separate(path, { column, " ", filetype })))
 
 vim.opt.statusline = [[%!v:lua.require("stlparts").build("default")]]
