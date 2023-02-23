@@ -12,9 +12,12 @@ local filetype = function()
   return vim.bo.filetype
 end
 
-local Padding = stlparts.component("padding")
 local Separate = stlparts.component("separate")
 
-stlparts.set("default", Padding(Separate(path, { column, " ", filetype })))
+stlparts.set("default", {
+  " ",
+  Separate(path, { column, " ", filetype }),
+  " ",
+})
 
 vim.opt.statusline = [[%!v:lua.require("stlparts").build("default")]]
