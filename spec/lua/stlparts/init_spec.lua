@@ -26,4 +26,22 @@ describe("stlparts.build()", function()
     local str = stlparts.build("default")
     assert.statusline(str, { fillchar = " ", maxwidth = 12 }, " test   str ")
   end)
+
+  it("can use trancate_left", function()
+    vim.cmd.edit("test")
+
+    local TrancateLeft = stlparts.component("trancate_left")
+
+    stlparts.set(
+      "default",
+      TrancateLeft("test_string", {
+        max_width = function()
+          return 9
+        end,
+      })
+    )
+
+    local str = stlparts.build("default")
+    assert.statusline(str, { fillchar = " ", maxwidth = 12 }, ".._string")
+  end)
 end)
