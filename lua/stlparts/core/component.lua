@@ -4,7 +4,7 @@ local M = {}
 
 function M.get(component)
   if vim.tbl_islist(component) then
-    return M.require_as_function("list")(component, { separator = "" })
+    return M.require_as_function("list")(component)
   end
 
   local typ = type(component)

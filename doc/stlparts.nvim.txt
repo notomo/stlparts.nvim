@@ -71,16 +71,6 @@ new({hl_group}, {component})              *stlparts.component.highlight.new()*
   Return: ~
     (table) |stlparts.nvim-types-component|
 
-new({components}, {opts})                      *stlparts.component.list.new()*
-  Listing components.
-
-  Parameters: ~
-    {components} (table) list of |stlparts.nvim-types-component|
-    {opts} (table|nil) default: {separator = " "}
-
-  Return: ~
-    (table) |stlparts.nvim-types-component|
-
 new({left}, {right})                       *stlparts.component.separate.new()*
   Separate by '%='. see |statusline|.
 
