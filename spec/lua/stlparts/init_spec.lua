@@ -12,13 +12,16 @@ describe("stlparts.build()", function()
 
     stlparts.set("default", {
       " ",
-      Separate(function()
-        return vim.fn.expand("%")
-      end, {
+      Separate({
         function()
-          return "st"
+          return vim.fn.expand("%")
         end,
-        "r",
+        {
+          function()
+            return "st"
+          end,
+          "r",
+        },
       }),
       " ",
     })

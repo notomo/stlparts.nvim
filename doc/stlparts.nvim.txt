@@ -61,12 +61,11 @@ new({hl_group}, {component})              *stlparts.component.highlight.new()*
   Return: ~
     (table) |stlparts.nvim-types-component|
 
-new({left}, {right})                       *stlparts.component.separate.new()*
-  Separate by '%='. see |statusline|.
+new({components})                          *stlparts.component.separate.new()*
+  Separate each components by '%='. see |statusline|.
 
   Parameters: ~
-    {left} (function|table) |stlparts.nvim-types-component|
-    {right} (function|table) |stlparts.nvim-types-component|
+    {components} (table[]) list of |stlparts.nvim-types-component|
 
   Return: ~
     (table) |stlparts.nvim-types-component|
@@ -134,7 +133,10 @@ EXAMPLES                                              *stlparts.nvim-EXAMPLES*
 
   stlparts.set("default", {
     " ",
-    Separate(path, { column, " ", filetype }),
+    Separate({
+      path,
+      { column, " ", filetype },
+    }),
     " ",
   })
 

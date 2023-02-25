@@ -23,7 +23,10 @@ local Separate = stlparts.component("separate")
 
 stlparts.set("default", {
   " ",
-  Separate(path, { column, " ", filetype }),
+  Separate({
+    path,
+    { column, " ", filetype },
+  }),
   " ",
 })
 
