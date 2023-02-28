@@ -20,96 +20,97 @@ component({name})                                       *stlparts.component()*
     {name} (string) component name
 
   Return: ~
-    (function) component constructor function
+    (StlpartsFunctionComponent) 
 
 set({name}, {component})                                      *stlparts.set()*
   Set a component.
 
   Parameters: ~
     {name} (string) use to refer from |stlparts.build()|
-    {component} (table|function) |stlparts.nvim-types-component|
+    {component} (StlpartsComponent) |StlpartsComponent|
 
 ==============================================================================
-COMPONENTS                                          *stlparts.nvim-components*
+COMPONENTS                                          *stlparts.nvim-COMPONENTS*
 
-new({create_component})                     *stlparts.component.builder.new()*
+builder({create_component})                     *stlparts.component.builder()*
   Build components dynamically.
 
   Parameters: ~
-    {create_component} (function) |stlparts.nvim-types-component|
+    {create_component} (fun(ctx:StlpartsContext):StlpartsComponent) 
 
   Return: ~
-    (table) |stlparts.nvim-types-component|
+    (StlpartsFunctionComponent) |StlpartsFunctionComponent|
 
-new({hl_group}, {component})      *stlparts.component.default_highlight.new()*
+default_highlight({hl_group}, {component})
+                                      *stlparts.component.default_highlight()*
   Set default highlight group to use in children components.
 
   Parameters: ~
     {hl_group} (string) highlight group
-    {component} (function|table) |stlparts.nvim-types-component|
+    {component} (StlpartsComponent) |StlpartsComponent|
 
   Return: ~
-    (table) |stlparts.nvim-types-component|
+    (StlpartsFunctionComponent) |StlpartsFunctionComponent|
 
-new({hl_group}, {component})              *stlparts.component.highlight.new()*
+highlight({hl_group}, {component})            *stlparts.component.highlight()*
   Highlight component.
 
   Parameters: ~
     {hl_group} (string) highlight group
-    {component} (function|table) |stlparts.nvim-types-component|
+    {component} (StlpartsComponent) |StlpartsComponent|
 
   Return: ~
-    (table) |stlparts.nvim-types-component|
+    (StlpartsFunctionComponent) |StlpartsFunctionComponent|
 
-new({components})                          *stlparts.component.separate.new()*
+separate({components})                         *stlparts.component.separate()*
   Separate each components by '%='. see |statusline|.
 
   Parameters: ~
-    {components} (table[]) list of |stlparts.nvim-types-component|
+    {components} (StlpartsComponent[]) |StlpartsComponent|
 
   Return: ~
-    (table) |stlparts.nvim-types-component|
+    (StlpartsFunctionComponent) |StlpartsFunctionComponent|
 
-new({make_key}, {mapping}, {opts})           *stlparts.component.switch.new()*
+switch({make_key}, {mapping}, {opts})            *stlparts.component.switch()*
   Switch by whether mapping has filetype matched with the buffer's filetype.
 
   Parameters: ~
-    {make_key} (fun(ctx:table):string) returns key to switch mapping table value
-    {mapping} (table) |stlparts.nvim-types-component| table
+    {make_key} (fun(ctx:StlpartsContext):string) returns key to switch mapping table value. |StlpartsContext|
+    {mapping} (table<string,StlpartsFunctionComponent>) 
     {opts} (table|nil) {default_key = "_"}
 
   Return: ~
-    (table) |stlparts.nvim-types-component|
+    (StlpartsFunctionComponent) |StlpartsFunctionComponent|
 
-new({tabpage}, {component})                     *stlparts.component.tab.new()*
+tab({tabpage}, {component})                         *stlparts.component.tab()*
   Make tab component that can be used in tabline.
 
   Parameters: ~
-    {tabpage} (number) tabpage handle, or 0 for current tabpage
-    {component} (function|table) |stlparts.nvim-types-component|
+    {tabpage} (integer) tabpage handle, or 0 for current tabpage
+    {component} (StlpartsComponent) |StlpartsComponent|
 
   Return: ~
-    (table) |stlparts.nvim-types-component|
+    (StlpartsFunctionComponent) |StlpartsFunctionComponent|
 
-new({component}, {opts})              *stlparts.component.trancate_left.new()*
+trancate_left({component}, {opts})        *stlparts.component.trancate_left()*
   Trancate left string by window width.
 
   Parameters: ~
-    {component} (function|table) |stlparts.nvim-types-component|
+    {component} (StlpartsComponent) 
     {opts} (table|nil) default: {max_width = number|function(ctx) return ctx:window_width() end, ellipsis = ".."}
 
   Return: ~
-    (table) |stlparts.nvim-types-component|
+    (StlpartsFunctionComponent) |StlpartsFunctionComponent|
 
 ==============================================================================
-TYPES                                                    *stlparts.nvim-TYPES*
+STRUCTURE                                            *stlparts.nvim-STRUCTURE*
 
-Component                                      *stlparts.nvim-types-component*
+StlpartsContext                                              *StlpartsContext*
 
-Type is one of the following:
-- (function): returns string
-- (table): {new = `component constructor`, build = `function returns string`}
-
+- {window_id} (integer)
+- {hl_group} (string)
+- {highlight} (fun(self:StlpartsContext,hl_group:string):StlpartsContext)
+- {window} (fun(self:StlpartsContext,window_id:integer):StlpartsContext)
 
 ==============================================================================
 EXAMPLES                                              *stlparts.nvim-EXAMPLES*

@@ -1,22 +1,13 @@
-local M = {}
-M.__index = M
-
 -- internal component
+return function(components)
+  components = vim.tbl_map(function(c)
+    return require("stlparts.core.component").get(c)
+  end, components)
 
-function M.new(components)
-  local tbl = {
-    _components = vim.tbl_map(function(c)
-      return require("stlparts.core.component").get(c)
-    end, components),
-  }
-  return setmetatable(tbl, M)
+  return function(ctx)
+    local strs = vim.tbl_map(function(component)
+      return component(ctx)
+    end, components)
+    return table.concat(strs, "")
+  end
 end
-
-function M.build(self, ctx)
-  local strs = vim.tbl_map(function(c)
-    return c:build(ctx)
-  end, self._components)
-  return table.concat(strs, "")
-end
-
-return M

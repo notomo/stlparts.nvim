@@ -19,19 +19,14 @@ require("genvdoc").generate(plugin_name .. ".nvim", {
         return "Lua module: " .. group
       end,
       group = function(node)
-        if not node.declaration then
-          return nil
-        end
-        if node.declaration.module:match("%.component%.") then
+        if node.declaration == nil or node.declaration.type ~= "function" then
           return nil
         end
         return node.declaration.module
       end,
     },
     {
-      name = function()
-        return "COMPONENTS"
-      end,
+      name = "COMPONENTS",
       group = function(node)
         if not node.declaration then
           return nil
@@ -39,23 +34,19 @@ require("genvdoc").generate(plugin_name .. ".nvim", {
         if not node.declaration.module:match("%.component%.") then
           return nil
         end
-        return "components"
+        if node.declaration.type ~= "anonymous_function" then
+          return nil
+        end
+        return "COMPONENTS"
       end,
     },
     {
-      name = "TYPES",
-      body = function(ctx)
-        return util.sections(ctx, {
-          {
-            name = "Component",
-            tag_name = "types-component",
-            text = [[
-Type is one of the following:
-- (function): returns string
-- (table): {new = `component constructor`, build = `function returns string`}
-]],
-          },
-        })
+      name = "STRUCTURE",
+      group = function(node)
+        if node.declaration == nil or not vim.tbl_contains({ "class" }, node.declaration.type) then
+          return nil
+        end
+        return "STRUCTURE"
       end,
     },
     {

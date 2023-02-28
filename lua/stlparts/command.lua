@@ -2,13 +2,13 @@ local M = {}
 
 function M.build(name, opts)
   opts = opts or {}
-  local ctx = require("stlparts.core.context").new(opts.window_id, opts.hl_group)
   local component = require("stlparts.core.setting").state()[name]
-  return require("stlparts.core.component").build(ctx, component)
+  local ctx = require("stlparts.core.context").new(opts.window_id, opts.hl_group)
+  return component(ctx)
 end
 
 function M.component(name)
-  local f, err = require("stlparts.core.component").require_as_function(name)
+  local f, err = require("stlparts.core.component").require(name)
   if err then
     return nil, err
   end
@@ -16,6 +16,7 @@ function M.component(name)
 end
 
 function M.set(name, component)
+  component = require("stlparts.core.component").get(component)
   return require("stlparts.core.setting").set({ [name] = component })
 end
 

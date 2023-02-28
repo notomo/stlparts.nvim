@@ -2,7 +2,7 @@ local vim = vim
 
 local M = {}
 
-function M.require_as_function(name)
+function M.require(name)
   vim.validate({ name = { name, "string" } })
 
   local Component = require("stlparts.vendor.misclib.module").find("stlparts.component." .. name)
@@ -10,43 +10,29 @@ function M.require_as_function(name)
     return nil, "not found: " .. name
   end
 
-  return Component.new
+  return Component
 end
 
-local List = M.require_as_function("list")
+local List = M.require("list")
 
 function M.get(component)
+  local typ = type(component)
+
+  if typ == "function" then
+    return component
+  end
+
+  if typ == "string" then
+    return function(_)
+      return component
+    end
+  end
+
   if vim.tbl_islist(component) then
     return List(component)
   end
 
-  local typ = type(component)
-
-  if typ == "table" then
-    return component
-  end
-
-  if typ == "function" then
-    return {
-      build = function(_, ctx)
-        return component(ctx)
-      end,
-    }
-  end
-
-  if typ == "string" then
-    return {
-      build = function(_)
-        return component
-      end,
-    }
-  end
-
   error("unexpected type: " .. typ)
-end
-
-function M.build(ctx, component)
-  return M.get(component):build(ctx)
 end
 
 return M

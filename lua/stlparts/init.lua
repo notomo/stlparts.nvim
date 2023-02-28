@@ -8,9 +8,11 @@ function M.build(name, opts)
   return require("stlparts.command").build(name, opts)
 end
 
+-- TODO: impl typed componets
+
 --- Returns a component function.
 --- @param name string: component name
---- @return function: component constructor function
+--- @return fun(...:any):StlpartsFunctionComponent
 function M.component(name)
   local f, err = require("stlparts.command").component(name)
   if err then
@@ -21,9 +23,19 @@ end
 
 --- Set a component.
 --- @param name string: use to refer from |stlparts.build()|
---- @param component table|function: |stlparts.nvim-types-component|
+--- @param component StlpartsComponent |StlpartsComponent|
 function M.set(name, component)
   return require("stlparts.command").set(name, component)
 end
+
+--- @alias StlpartsComponent StlpartsFunctionComponent|string|StlpartsComponent[]
+
+--- @alias StlpartsFunctionComponent fun(ctx:StlpartsContext):string
+
+--- @class StlpartsContext
+--- @field window_id integer
+--- @field hl_group string
+--- @field highlight fun(self:StlpartsContext,hl_group:string):StlpartsContext
+--- @field window fun(self:StlpartsContext,window_id:integer):StlpartsContext
 
 return M
