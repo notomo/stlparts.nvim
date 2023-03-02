@@ -8,7 +8,7 @@ describe("stlparts.build()", function()
   it("returns statusline string", function()
     vim.cmd.edit("test")
 
-    local Separate = stlparts.component("separate")
+    local Separate = stlparts.component.separate
 
     stlparts.set("default", {
       " ",
@@ -33,7 +33,7 @@ describe("stlparts.build()", function()
   it("can use trancate_left", function()
     vim.cmd.edit("test")
 
-    local TrancateLeft = stlparts.component("trancate_left")
+    local TrancateLeft = stlparts.component.trancate_left
 
     stlparts.set(
       "default",

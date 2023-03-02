@@ -5,12 +5,12 @@ local M = {}
 function M.require(name)
   vim.validate({ name = { name, "string" } })
 
-  local Component = require("stlparts.vendor.misclib.module").find("stlparts.component." .. name)
-  if not Component then
+  local f = require("stlparts.vendor.misclib.module").find("stlparts.component." .. name)
+  if not f then
     return nil, "not found: " .. name
   end
 
-  return Component
+  return f
 end
 
 local List = M.require("list")

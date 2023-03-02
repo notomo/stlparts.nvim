@@ -12,7 +12,7 @@ local filetype = function()
   return vim.bo.filetype
 end
 
-local Separate = stlparts.component("separate")
+local Separate = stlparts.component.separate
 
 stlparts.set("default", {
   " ",

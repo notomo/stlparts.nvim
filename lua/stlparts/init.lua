@@ -8,18 +8,39 @@ function M.build(name, opts)
   return require("stlparts.command").build(name, opts)
 end
 
--- TODO: impl typed componets
+-- for type annotations
+local public_components = {
+  --- @module "stlparts.component.tab"
+  ---@diagnostic disable-next-line: assign-type-mismatch
+  tab = nil,
+  --- @module "stlparts.component.builder"
+  ---@diagnostic disable-next-line: assign-type-mismatch
+  builder = nil,
+  --- @module "stlparts.component.switch"
+  ---@diagnostic disable-next-line: assign-type-mismatch
+  switch = nil,
+  --- @module "stlparts.component.separate"
+  ---@diagnostic disable-next-line: assign-type-mismatch
+  separate = nil,
+  --- @module "stlparts.component.highlight"
+  ---@diagnostic disable-next-line: assign-type-mismatch
+  highlight = nil,
+  --- @module "stlparts.component.default_highlight"
+  ---@diagnostic disable-next-line: assign-type-mismatch
+  default_highlight = nil,
+  --- @module "stlparts.component.trancate_left"
+  ---@diagnostic disable-next-line: assign-type-mismatch
+  trancate_left = nil,
+}
 
---- Returns a component function.
---- @param name string: component name
---- @return fun(...:any):StlpartsFunctionComponent
-function M.component(name)
-  local f, err = require("stlparts.command").component(name)
-  if err then
-    error("[stlparts] " .. err, 0)
-  end
-  return f
-end
+-- TODO doc gen
+--- Components accessor
+M.component = setmetatable(public_components, {
+  __index = function(tbl, name)
+    tbl[name] = require("stlparts.command").component(name)
+    return tbl[name]
+  end,
+})
 
 --- Set a component.
 --- @param name string: use to refer from |stlparts.build()|

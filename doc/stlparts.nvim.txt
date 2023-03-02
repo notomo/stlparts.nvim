@@ -13,15 +13,6 @@ build({name}, {opts})                                       *stlparts.build()*
   Return: ~
     (string) statusline expression string
 
-component({name})                                       *stlparts.component()*
-  Returns a component function.
-
-  Parameters: ~
-    {name} (string) component name
-
-  Return: ~
-    (StlpartsFunctionComponent) 
-
 set({name}, {component})                                      *stlparts.set()*
   Set a component.
 
@@ -130,7 +121,7 @@ EXAMPLES                                              *stlparts.nvim-EXAMPLES*
     return vim.bo.filetype
   end
 
-  local Separate = stlparts.component("separate")
+  local Separate = stlparts.component.separate
 
   stlparts.set("default", {
     " ",

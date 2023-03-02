@@ -10,7 +10,7 @@ end
 function M.component(name)
   local f, err = require("stlparts.core.component").require(name)
   if err then
-    return nil, err
+    error("[stlparts] " .. err, 0)
   end
   return f
 end
