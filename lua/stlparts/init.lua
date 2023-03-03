@@ -33,8 +33,10 @@ local public_components = {
   trancate_left = nil,
 }
 
--- TODO doc gen
---- Components accessor
+--- Components accessor.
+--- - Usage: `require("stlparts").component.{component_name}`
+--- - Example: |stlparts.nvim-EXAMPLES|
+--- - All components: |stlparts.nvim-COMPONENTS|
 M.component = setmetatable(public_components, {
   __index = function(tbl, name)
     tbl[name] = require("stlparts.command").component(name)

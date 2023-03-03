@@ -13,6 +13,12 @@ build({name}, {opts})                                       *stlparts.build()*
   Return: ~
     (string) statusline expression string
 
+component                                                 *stlparts.component*
+  Components accessor.
+  - Usage: `require("stlparts").component.{component_name}`
+  - Example: |stlparts.nvim-EXAMPLES|
+  - All components: |stlparts.nvim-COMPONENTS|
+
 set({name}, {component})                                      *stlparts.set()*
   Set a component.
 

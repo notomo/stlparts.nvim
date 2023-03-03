@@ -19,7 +19,7 @@ require("genvdoc").generate(plugin_name .. ".nvim", {
         return "Lua module: " .. group
       end,
       group = function(node)
-        if node.declaration == nil or node.declaration.type ~= "function" then
+        if node.declaration == nil or not vim.tbl_contains({ "function", "property" }, node.declaration.type) then
           return nil
         end
         return node.declaration.module
