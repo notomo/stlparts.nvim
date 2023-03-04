@@ -89,8 +89,8 @@ tab({tabpage}, {component})                         *stlparts.component.tab()*
   Return: ~
     (StlpartsFunctionComponent) |StlpartsFunctionComponent|
 
-trancate_left({component}, {opts})        *stlparts.component.trancate_left()*
-  Trancate left string by window width.
+truncate_left({component}, {opts})        *stlparts.component.truncate_left()*
+  Truncate left string by window width.
 
   Parameters: ~
     {component} (StlpartsComponent) Limitation: separate component does not work under truncate_left component.

@@ -28,9 +28,9 @@ local public_components = {
   --- @module "stlparts.component.default_highlight"
   ---@diagnostic disable-next-line: assign-type-mismatch
   default_highlight = nil,
-  --- @module "stlparts.component.trancate_left"
+  --- @module "stlparts.component.truncate_left"
   ---@diagnostic disable-next-line: assign-type-mismatch
-  trancate_left = nil,
+  truncate_left = nil,
 }
 
 --- Components accessor.
