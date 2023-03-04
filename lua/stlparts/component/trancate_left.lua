@@ -1,5 +1,8 @@
+local vim = vim
+local fn = vim.fn
+
 --- Trancate left string by window width.
---- @param component StlpartsComponent
+--- @param component StlpartsComponent Limitation: separate component does not work under truncate_left component.
 --- @param opts table|nil: default: {max_width = number|function(ctx) return ctx:window_width() end, ellipsis = ".."}
 --- @return StlpartsFunctionComponent |StlpartsFunctionComponent|
 return function(component, opts)
@@ -7,7 +10,7 @@ return function(component, opts)
   opts = opts or {}
 
   local ellipsis = opts.ellipsis or ".."
-  local ellipsis_length = vim.fn.strwidth(ellipsis)
+  local ellipsis_length = fn.strwidth(ellipsis)
 
   local get_max_width = opts.max_width or function(ctx)
     return ctx:window_width()
@@ -20,11 +23,19 @@ return function(component, opts)
 
   return function(ctx)
     local str = component(ctx)
-    local width = vim.fn.strwidth(str)
+    local evaled = vim.api.nvim_eval_statusline(str, {
+      winid = ctx.window_id,
+    })
+    local evaled_str = evaled.str
+
+    local result = evaled_str
     local max_width = get_max_width(ctx)
+    local width = evaled.width
     if max_width < width then
-      return ellipsis .. vim.fn.strpart(str, width - max_width + ellipsis_length)
+      result = ellipsis .. fn.strpart(evaled_str, width - max_width + ellipsis_length)
     end
-    return str
+
+    result = result:gsub("%%", "%%%%")
+    return result
   end
 end
