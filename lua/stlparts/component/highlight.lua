@@ -10,6 +10,6 @@ return function(hl_group, component)
   component = require("stlparts.core.component").get(component)
   local highlight_start = highlight(hl_group)
   return function(ctx)
-    return highlight_start .. component(ctx:highlight(hl_group)) .. highlight(ctx.hl_group)
+    return highlight_start .. component(ctx:with_highlight(hl_group)) .. highlight(ctx.hl_group)
   end
 end

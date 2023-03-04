@@ -58,7 +58,8 @@ end
 --- @class StlpartsContext
 --- @field window_id integer
 --- @field hl_group string
---- @field highlight fun(self:StlpartsContext,hl_group:string):StlpartsContext
---- @field window fun(self:StlpartsContext,window_id:integer):StlpartsContext
+--- @field width fun(self:StlpartsContext):integer
+--- @field with_highlight fun(self:StlpartsContext,hl_group:string):StlpartsContext
+--- @field with_window fun(self:StlpartsContext,window_id:integer):StlpartsContext
 
 return M

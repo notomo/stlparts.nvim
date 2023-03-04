@@ -94,7 +94,7 @@ truncate_left({component}, {opts})        *stlparts.component.truncate_left()*
 
   Parameters: ~
     {component} (StlpartsComponent) Limitation: separate, highlight component does not work under truncate_left component.
-    {opts} (table|nil) default: {max_width = number|function(ctx) return ctx:window_width() end, ellipsis = ".."}
+    {opts} (table|nil) default: {max_width = number|function(ctx) return ctx:width() end, ellipsis = ".."}
 
   Return: ~
     (StlpartsFunctionComponent) |StlpartsFunctionComponent|
@@ -106,8 +106,9 @@ StlpartsContext                                              *StlpartsContext*
 
 - {window_id} (integer)
 - {hl_group} (string)
-- {highlight} (fun(self:StlpartsContext,hl_group:string):StlpartsContext)
-- {window} (fun(self:StlpartsContext,window_id:integer):StlpartsContext)
+- {width} (fun(self:StlpartsContext):integer)
+- {with_highlight} (fun(self:StlpartsContext,hl_group:string):StlpartsContext)
+- {with_window} (fun(self:StlpartsContext,window_id:integer):StlpartsContext)
 
 ==============================================================================
 EXAMPLES                                              *stlparts.nvim-EXAMPLES*

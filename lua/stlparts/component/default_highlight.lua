@@ -5,6 +5,6 @@
 return function(hl_group, component)
   component = require("stlparts.core.component").get(component)
   return function(ctx)
-    return component(ctx:highlight(hl_group))
+    return component(ctx:with_highlight(hl_group))
   end
 end
