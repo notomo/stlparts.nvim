@@ -2,7 +2,7 @@ local vim = vim
 local fn = vim.fn
 
 --- Truncate left string by window width.
---- @param component StlpartsComponent Limitation: separate component does not work under truncate_left component.
+--- @param component StlpartsComponent Limitation: separate, highlight component does not work under truncate_left component.
 --- @param opts table|nil: default: {max_width = number|function(ctx) return ctx:window_width() end, ellipsis = ".."}
 --- @return StlpartsFunctionComponent |StlpartsFunctionComponent|
 return function(component, opts)

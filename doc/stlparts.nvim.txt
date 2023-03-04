@@ -93,7 +93,7 @@ truncate_left({component}, {opts})        *stlparts.component.truncate_left()*
   Truncate left string by window width.
 
   Parameters: ~
-    {component} (StlpartsComponent) Limitation: separate component does not work under truncate_left component.
+    {component} (StlpartsComponent) Limitation: separate, highlight component does not work under truncate_left component.
     {opts} (table|nil) default: {max_width = number|function(ctx) return ctx:window_width() end, ellipsis = ".."}
 
   Return: ~
