@@ -1,7 +1,7 @@
 --- Switch by whether mapping has filetype matched with the buffer's filetype.
 --- @param make_key fun(ctx:StlpartsContext):string returns key to switch mapping table value. |StlpartsContext|
 --- @param mapping table<string,StlpartsFunctionComponent>
---- @param opts table|nil: {default_key = "_"}
+--- @param opts StlpartsSwitchOption? |StlpartsSwitchOption|
 --- @return StlpartsFunctionComponent |StlpartsFunctionComponent|
 return function(make_key, mapping, opts)
   opts = opts or {}
@@ -22,3 +22,6 @@ return function(make_key, mapping, opts)
     return default(ctx)
   end
 end
+
+--- @class StlpartsSwitchOption
+--- @field defualt_key string? default: "_"

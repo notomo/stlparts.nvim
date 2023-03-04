@@ -8,7 +8,7 @@ build({name}, {opts})                                       *stlparts.build()*
 
   Parameters: ~
     {name} (string) registered name by |stlparts.set()|
-    {opts} (table|nil) {window_id = nil, hl_group = "StatusLine"}
+    {opts} (StlpartsBuildOption?) |StlpartsBuildOption|
 
   Return: ~
     (string) statusline expression string
@@ -74,10 +74,14 @@ switch({make_key}, {mapping}, {opts})            *stlparts.component.switch()*
   Parameters: ~
     {make_key} (fun(ctx:StlpartsContext):string) returns key to switch mapping table value. |StlpartsContext|
     {mapping} (table<string,StlpartsFunctionComponent>) 
-    {opts} (table|nil) {default_key = "_"}
+    {opts} (StlpartsSwitchOption?) |StlpartsSwitchOption|
 
   Return: ~
     (StlpartsFunctionComponent) |StlpartsFunctionComponent|
+
+StlpartsSwitchOption                                    *StlpartsSwitchOption*
+
+- {defualt_key} (string?) default: "_"
 
 tab({tabpage}, {component})                         *stlparts.component.tab()*
   Make tab component that can be used in tabline.
@@ -94,13 +98,23 @@ truncate_left({component}, {opts})        *stlparts.component.truncate_left()*
 
   Parameters: ~
     {component} (StlpartsComponent) Limitation: separate, highlight component does not work under truncate_left component.
-    {opts} (table|nil) default: {max_width = number|function(ctx) return ctx:width() end, ellipsis = ".."}
+    {opts} (StlpartsTruncateLeftOption?) 
 
   Return: ~
     (StlpartsFunctionComponent) |StlpartsFunctionComponent|
 
+StlpartsTruncateLeftOption                        *StlpartsTruncateLeftOption*
+
+- {max_width} ((integer|fun(ctx:StlpartsContext):integer)?) default: window width
+- {ellipsis} (string?) default: ".."
+
 ==============================================================================
 STRUCTURE                                            *stlparts.nvim-STRUCTURE*
+
+StlpartsBuildOption                                      *StlpartsBuildOption*
+
+- {window_id} (integer?)
+- {hl_group} (string?) default: "StatusLine"
 
 StlpartsContext                                              *StlpartsContext*
 

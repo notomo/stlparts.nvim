@@ -1,8 +1,12 @@
 local M = {}
 
+--- @class StlpartsBuildOption
+--- @field window_id integer?
+--- @field hl_group string? default: "StatusLine"
+
 --- Returns a 'statusline' string.
 --- @param name string: registered name by |stlparts.set()|
---- @param opts table|nil: {window_id = nil, hl_group = "StatusLine"}
+--- @param opts StlpartsBuildOption?: |StlpartsBuildOption|
 --- @return string: statusline expression string
 function M.build(name, opts)
   return require("stlparts.command").build(name, opts)

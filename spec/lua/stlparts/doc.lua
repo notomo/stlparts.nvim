@@ -34,7 +34,9 @@ require("genvdoc").generate(plugin_name .. ".nvim", {
         if not node.declaration.module:match("%.component%.") then
           return nil
         end
-        if node.declaration.type ~= "anonymous_function" then
+        if
+          node.declaration == nil or not vim.tbl_contains({ "anonymous_function", "class" }, node.declaration.type)
+        then
           return nil
         end
         return "COMPONENTS"
@@ -43,6 +45,9 @@ require("genvdoc").generate(plugin_name .. ".nvim", {
     {
       name = "STRUCTURE",
       group = function(node)
+        if node.declaration.module:match("%.component%.") then
+          return nil
+        end
         if node.declaration == nil or not vim.tbl_contains({ "class" }, node.declaration.type) then
           return nil
         end
