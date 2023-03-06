@@ -32,7 +32,7 @@ return function(component, opts)
     local max_width = get_max_width(ctx)
     local width = evaled.width
     if max_width < width then
-      result = ellipsis .. fn.strpart(evaled_str, width - max_width + ellipsis_length)
+      result = ellipsis .. fn.strpart(evaled_str, math.floor(width - max_width + ellipsis_length))
     end
 
     result = result:gsub("%%", "%%%%")
@@ -41,5 +41,5 @@ return function(component, opts)
 end
 
 --- @class StlpartsTruncateLeftOption
---- @field max_width (integer|fun(ctx:StlpartsContext):integer)? default: window width
+--- @field max_width (number|fun(ctx:StlpartsContext):number)? default: window width
 --- @field ellipsis string? default: ".."

@@ -105,7 +105,7 @@ truncate_left({component}, {opts})        *stlparts.component.truncate_left()*
 
 StlpartsTruncateLeftOption                        *StlpartsTruncateLeftOption*
 
-- {max_width} ((integer|fun(ctx:StlpartsContext):integer)?) default: window width
+- {max_width} ((number|fun(ctx:StlpartsContext):number)?) default: window width
 - {ellipsis} (string?) default: ".."
 
 ==============================================================================
