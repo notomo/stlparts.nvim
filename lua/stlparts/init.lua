@@ -7,7 +7,7 @@ local M = {}
 --- Returns a 'statusline' string.
 --- @param name string: registered name by |stlparts.set()|
 --- @param opts StlpartsBuildOption?: |StlpartsBuildOption|
---- @return string: statusline expression string
+--- @return string # statusline expression string
 function M.build(name, opts)
   return require("stlparts.command").build(name, opts)
 end
