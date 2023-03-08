@@ -4,7 +4,7 @@ local fn = vim.fn
 --- Truncate left string by window width.
 --- @param component StlpartsComponent Limitation: separate, highlight component does not work under truncate_left component.
 --- @param opts StlpartsTruncateLeftOption?
---- @return StlpartsFunctionComponent |StlpartsFunctionComponent|
+--- @return StlpartsFunctionComponent # |StlpartsFunctionComponent|
 return function(component, opts)
   component = require("stlparts.core.component").get(component)
   opts = opts or {}

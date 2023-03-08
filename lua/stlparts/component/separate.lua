@@ -1,6 +1,6 @@
 --- Separate each components by '%='. see |statusline|.
 --- @param components StlpartsComponent[] |StlpartsComponent|
---- @return StlpartsFunctionComponent |StlpartsFunctionComponent|
+--- @return StlpartsFunctionComponent # |StlpartsFunctionComponent|
 return function(components)
   components = vim.tbl_map(function(c)
     return require("stlparts.core.component").get(c)

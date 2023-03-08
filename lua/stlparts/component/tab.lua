@@ -1,7 +1,7 @@
 --- Make tab component that can be used in tabline.
 --- @param tabpage integer: tabpage handle, or 0 for current tabpage
 --- @param component StlpartsComponent |StlpartsComponent|
---- @return StlpartsFunctionComponent |StlpartsFunctionComponent|
+--- @return StlpartsFunctionComponent # |StlpartsFunctionComponent|
 return function(tabpage, component)
   component = require("stlparts.core.component").get(component)
 

@@ -17,7 +17,7 @@ end
 
 function M.set(name, component)
   component = require("stlparts.core.component").get(component)
-  return require("stlparts.core.setting").set({ [name] = component })
+  require("stlparts.core.setting").set({ [name] = component })
 end
 
 return M
