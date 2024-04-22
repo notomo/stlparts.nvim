@@ -28,7 +28,7 @@ function M.get(component)
     end
   end
 
-  if vim.tbl_islist(component) then
+  if vim.islist(component) then
     return List(component)
   end
 
