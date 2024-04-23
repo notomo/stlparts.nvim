@@ -6,12 +6,10 @@
 return function(make_key, mapping, opts)
   opts = opts or {}
 
-  local component_map = vim
-    .iter(mapping)
-    :map(function(c)
-      return require("stlparts.core.component").get(c)
-    end)
-    :totable()
+  local component_map = {}
+  vim.iter(mapping):each(function(key, c)
+    component_map[key] = require("stlparts.core.component").get(c)
+  end)
 
   local default_key = opts.default_key or "_"
   local default = require("stlparts.core.component").get(component_map[default_key] or "")
