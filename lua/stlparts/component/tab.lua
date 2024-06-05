@@ -10,6 +10,6 @@ return function(tabpage, component)
   local window_id = vim.api.nvim_tabpage_get_win(tabpage)
 
   return function(ctx)
-    return built_tab_number .. component(ctx:with_window(window_id)) .. "%T"
+    return built_tab_number .. component(ctx:with_tab(window_id)) .. "%T"
   end
 end

@@ -38,6 +38,9 @@ local public_components = {
   --- @module "stlparts.component.truncate_right"
   ---@diagnostic disable-next-line: assign-type-mismatch
   truncate_right = nil,
+  --- @module "stlparts.component.context_builder"
+  ---@diagnostic disable-next-line: assign-type-mismatch
+  context_builder = nil,
 }
 
 --- Components accessor.
@@ -65,6 +68,7 @@ end
 --- @class StlpartsContext
 --- @field window_id integer
 --- @field hl_group string
+--- @field tab_id integer|nil not nil if the component has tab component ancestor
 --- @field width fun(self:StlpartsContext):integer
 --- @field with_highlight fun(self:StlpartsContext,hl_group:string):StlpartsContext
 --- @field with_window fun(self:StlpartsContext,window_id:integer):StlpartsContext

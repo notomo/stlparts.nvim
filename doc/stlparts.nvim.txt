@@ -38,6 +38,17 @@ builder({create_component})                     *stlparts.component.builder()*
   Return: ~
     (StlpartsFunctionComponent) |StlpartsFunctionComponent|
 
+context_builder({make_context}, {component})
+                                        *stlparts.component.context_builder()*
+  Build context and pass to children components.
+
+  Parameters: ~
+    {make_context} (fun(ctx:StlpartsContext):StlpartsContext) 
+    {component} (StlpartsComponent) |StlpartsComponent|
+
+  Return: ~
+    (StlpartsFunctionComponent) |StlpartsFunctionComponent|
+
 default_highlight({hl_group}, {component})
                                       *stlparts.component.default_highlight()*
   Set default highlight group to use in children components.
@@ -129,6 +140,7 @@ StlpartsContext                                              *StlpartsContext*
 
 - {window_id} (integer)
 - {hl_group} (string)
+- {tab_id} (integer|nil) not nil if the component has tab component ancestor
 - {width} (fun(self:StlpartsContext):integer)
 - {with_highlight} (fun(self:StlpartsContext,hl_group:string):StlpartsContext)
 - {with_window} (fun(self:StlpartsContext,window_id:integer):StlpartsContext)
