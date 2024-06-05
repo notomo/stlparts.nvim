@@ -35,6 +35,9 @@ local public_components = {
   --- @module "stlparts.component.truncate_left"
   ---@diagnostic disable-next-line: assign-type-mismatch
   truncate_left = nil,
+  --- @module "stlparts.component.truncate_right"
+  ---@diagnostic disable-next-line: assign-type-mismatch
+  truncate_right = nil,
 }
 
 --- Components accessor.

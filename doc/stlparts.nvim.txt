@@ -108,6 +108,15 @@ StlpartsTruncateLeftOption                        *StlpartsTruncateLeftOption*
 - {max_width} ((number|fun(ctx:StlpartsContext):number)?) default: window width
 - {ellipsis} (string?) default: ".."
 
+truncate_right({component})              *stlparts.component.truncate_right()*
+  Truncate right string by window width.
+
+  Parameters: ~
+    {component} (StlpartsComponent) Limitation: separate, highlight component does not work under truncate_left component.
+
+  Return: ~
+    (StlpartsFunctionComponent) |StlpartsFunctionComponent|
+
 ==============================================================================
 STRUCTURE                                            *stlparts.nvim-STRUCTURE*
 

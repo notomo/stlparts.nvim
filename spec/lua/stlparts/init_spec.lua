@@ -73,4 +73,13 @@ describe("stlparts.build()", function()
       assert.statusline(str, { fillchar = " ", maxwidth = 12 }, "test2")
     end
   end)
+
+  it("can truncate right", function()
+    local TruncateRight = stlparts.component.truncate_right
+
+    stlparts.set("default", TruncateRight("test_string", { max_width = 5 }))
+
+    local str = stlparts.build("default")
+    assert.statusline(str, { fillchar = " ", maxwidth = 12 }, "tes..")
+  end)
 end)
