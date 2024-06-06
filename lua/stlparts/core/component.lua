@@ -7,7 +7,7 @@ function M.require(name)
 
   local f = require("stlparts.vendor.misclib.module").find("stlparts.component." .. name)
   if not f then
-    return nil, "not found: " .. name
+    return "not found: " .. name
   end
 
   return f

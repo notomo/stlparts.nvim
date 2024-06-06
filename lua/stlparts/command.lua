@@ -8,8 +8,9 @@ function M.build(name, opts)
 end
 
 function M.component(name)
-  local f, err = require("stlparts.core.component").require(name)
-  if err then
+  local f = require("stlparts.core.component").require(name)
+  if type(f) == "string" then
+    local err = f
     error("[stlparts] " .. err, 0)
   end
   return f
