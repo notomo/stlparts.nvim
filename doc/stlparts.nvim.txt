@@ -123,7 +123,7 @@ truncate_right({component})              *stlparts.component.truncate_right()*
   Truncate right string by window width.
 
   Parameters: ~
-    {component} (StlpartsComponent) Limitation: separate, highlight component does not work under truncate_left component.
+    {component} (StlpartsComponent) Limitation: separate, highlight component does not work under truncate_right component.
 
   Return: ~
     (StlpartsFunctionComponent) |StlpartsFunctionComponent|
