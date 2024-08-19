@@ -2,9 +2,8 @@ local vim = vim
 
 local M = {}
 
+--- @param name string
 function M.require(name)
-  vim.validate({ name = { name, "string" } })
-
   local f = require("stlparts.vendor.misclib.module").find("stlparts.component." .. name)
   if not f then
     return "not found: " .. name
