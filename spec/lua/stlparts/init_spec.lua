@@ -1,5 +1,6 @@
 local helper = require("stlparts.test.helper")
 local stlparts = helper.require("stlparts")
+local assert = helper.typed_assert(assert)
 
 describe("stlparts.build()", function()
   before_each(helper.before_each)
