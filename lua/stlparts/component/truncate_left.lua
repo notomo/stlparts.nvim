@@ -15,9 +15,10 @@ return function(component, opts)
   local get_max_width = opts.max_width or function(ctx)
     return ctx:width()
   end
-  if type(opts.max_width) == "number" then
+  local fixed_max_width = opts.max_width
+  if type(fixed_max_width) == "number" then
     get_max_width = function()
-      return opts.max_width
+      return fixed_max_width
     end
   end
 

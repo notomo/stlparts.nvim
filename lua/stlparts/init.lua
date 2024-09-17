@@ -72,5 +72,6 @@ end
 --- @field width fun(self:StlpartsContext):integer
 --- @field with_highlight fun(self:StlpartsContext,hl_group:string):StlpartsContext
 --- @field with_window fun(self:StlpartsContext,window_id:integer):StlpartsContext
+--- @field with_tab fun(self:StlpartsContext,window_id:integer):StlpartsContext
 
 return M

@@ -25,4 +25,4 @@ return function(make_key, mapping, opts)
 end
 
 --- @class StlpartsSwitchOption
---- @field defualt_key string? default: "_"
+--- @field default_key string? default: "_"

@@ -92,7 +92,7 @@ switch({make_key}, {mapping}, {opts})            *stlparts.component.switch()*
 
 StlpartsSwitchOption                                    *StlpartsSwitchOption*
 
-- {defualt_key} (string?) default: "_"
+- {default_key} (string?) default: "_"
 
 tab({tabpage}, {component})                         *stlparts.component.tab()*
   Make tab component that can be used in tabline.
@@ -144,6 +144,7 @@ StlpartsContext                                              *StlpartsContext*
 - {width} (fun(self:StlpartsContext):integer)
 - {with_highlight} (fun(self:StlpartsContext,hl_group:string):StlpartsContext)
 - {with_window} (fun(self:StlpartsContext,window_id:integer):StlpartsContext)
+- {with_tab} (fun(self:StlpartsContext,window_id:integer):StlpartsContext)
 
 ==============================================================================
 EXAMPLES                                              *stlparts.nvim-EXAMPLES*
