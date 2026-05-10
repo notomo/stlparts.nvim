@@ -60,6 +60,20 @@ default_highlight({hl_group}, {component})
   Return: ~
     (StlpartsFunctionComponent) |StlpartsFunctionComponent|
 
+error_boundary({component}, {opts})      *stlparts.component.error_boundary()*
+  Catch errors from component and show notification once.
+
+  Parameters: ~
+    {component} (StlpartsComponent) |StlpartsComponent|
+    {opts} (StlpartsErrorBoundaryOption?) |StlpartsErrorBoundaryOption|
+
+  Return: ~
+    (StlpartsFunctionComponent) |StlpartsFunctionComponent|
+
+StlpartsErrorBoundaryOption                      *StlpartsErrorBoundaryOption*
+
+- {fallback_component} (StlpartsComponent?) default: "ERROR"
+
 highlight({hl_group}, {component})            *stlparts.component.highlight()*
   Highlight component.
 

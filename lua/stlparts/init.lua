@@ -41,6 +41,9 @@ local public_components = {
   --- @module "stlparts.component.context_builder"
   ---@diagnostic disable-next-line: assign-type-mismatch
   context_builder = nil,
+  --- @module "stlparts.component.error_boundary"
+  ---@diagnostic disable-next-line: assign-type-mismatch
+  error_boundary = nil,
 }
 
 --- Components accessor.
