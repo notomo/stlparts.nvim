@@ -1,6 +1,8 @@
+local ntf = require("ntf")
+local describe, it, before_each, after_each = ntf.describe, ntf.it, ntf.before_each, ntf.after_each
 local helper = require("stlparts.test.helper")
-local stlparts = helper.require("stlparts")
-local assert = helper.typed_assert(assert)
+local stlparts = require("stlparts")
+local assert = helper.typed_assert(ntf.assert)
 
 describe("stlparts.component.error_boundary()", function()
   before_each(helper.before_each)
@@ -8,9 +10,12 @@ describe("stlparts.component.error_boundary()", function()
 
   it("returns fallback 'ERROR' when component raises error", function()
     local ErrorBoundary = stlparts.component.error_boundary
-    stlparts.set("default", ErrorBoundary(function()
-      error("test error")
-    end))
+    stlparts.set(
+      "default",
+      ErrorBoundary(function()
+        error("test error")
+      end)
+    )
 
     local str = stlparts.build("default")
     assert.statusline(str, { fillchar = " ", maxwidth = 12 }, "ERROR")
@@ -18,9 +23,12 @@ describe("stlparts.component.error_boundary()", function()
 
   it("can use custom fallback_component", function()
     local ErrorBoundary = stlparts.component.error_boundary
-    stlparts.set("default", ErrorBoundary(function()
-      error("test error")
-    end, { fallback_component = "FALLBACK" }))
+    stlparts.set(
+      "default",
+      ErrorBoundary(function()
+        error("test error")
+      end, { fallback_component = "FALLBACK" })
+    )
 
     local str = stlparts.build("default")
     assert.statusline(str, { fillchar = " ", maxwidth = 12 }, "FALLBACK")

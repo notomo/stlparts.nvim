@@ -1,21 +1,18 @@
-local helper = require("vusted.helper")
+local helper = require("ntf.helper")
 local plugin_name = helper.get_module_root(...)
 
 helper.root = helper.find_plugin_root(plugin_name)
 
 function helper.before_each() end
 
-function helper.after_each()
-  helper.cleanup()
-  helper.cleanup_loaded_modules(plugin_name)
-end
+function helper.after_each() end
 
 vim.opt.packpath:prepend(vim.fs.joinpath(helper.root, "spec/.shared/packages"))
-require("assertlib").register(require("vusted.assert").register)
+require("assertlib").register(require("ntf.assert").register)
 
-local asserts = require("vusted.assert").asserts
+local assert = require("ntf.assert")
 
-asserts.create("statusline"):register_eq(function(str, opts)
+assert.register_eq("statusline", function(str, opts)
   return vim.api.nvim_eval_statusline(str, opts).str
 end)
 
