@@ -16,8 +16,8 @@ assert.register_eq("statusline", function(str, opts)
   return vim.api.nvim_eval_statusline(str, opts).str
 end)
 
-function helper.typed_assert(assert)
-  local x = require("assertlib").typed(assert)
+function helper.typed_assert(raw_assert)
+  local x = require("assertlib").typed(raw_assert)
   ---@cast x +{statusline:fun(str,opts,want)}
   return x
 end
