@@ -7,7 +7,7 @@ function helper.before_each() end
 
 function helper.after_each() end
 
-vim.opt.packpath:prepend(vim.fs.joinpath(helper.root, "spec/.shared/packages"))
+vim.opt.packpath:prepend(vim.env.TESTPACK_PACKPATH or vim.fs.joinpath(helper.root, "spec/.shared/packages"))
 require("assertlib").register(require("ntf.assert").register)
 
 local assert = require("ntf.assert")
