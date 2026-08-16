@@ -1,6 +1,6 @@
 --- Separate each components by '%='. see |statusline|.
---- @param components StlpartsComponent[] |StlpartsComponent|
---- @return StlpartsFunctionComponent # |StlpartsFunctionComponent|
+--- @param components StlpartsComponent[]
+--- @return StlpartsFunctionComponent
 return function(components)
   components = vim
     .iter(components)

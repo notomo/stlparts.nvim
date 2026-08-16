@@ -4,8 +4,8 @@ end
 
 --- Highlight component.
 --- @param hl_group string: highlight group
---- @param component StlpartsComponent |StlpartsComponent|
---- @return StlpartsFunctionComponent # |StlpartsFunctionComponent|
+--- @param component StlpartsComponent
+--- @return StlpartsFunctionComponent
 return function(hl_group, component)
   component = require("stlparts.core.component").get(component)
   local highlight_start = highlight(hl_group)

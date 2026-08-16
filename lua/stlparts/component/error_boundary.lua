@@ -1,7 +1,7 @@
 --- Catch errors from component and show notification once.
---- @param component StlpartsComponent |StlpartsComponent|
+--- @param component StlpartsComponent
 --- @param opts StlpartsErrorBoundaryOption? |StlpartsErrorBoundaryOption|
---- @return StlpartsFunctionComponent # |StlpartsFunctionComponent|
+--- @return StlpartsFunctionComponent
 return function(component, opts)
   component = require("stlparts.core.component").get(component)
   opts = opts or {}
