@@ -59,7 +59,7 @@ M.component = setmetatable(public_components, {
 
 --- Set a component.
 --- @param name string: use to refer from |stlparts.build()|
---- @param component StlpartsComponent
+--- @param component StlpartsComponent |StlpartsComponent|
 function M.set(name, component)
   require("stlparts.command").set(name, component)
 end
