@@ -1,4 +1,4 @@
---- Separate each components by '%='. see |statusline|.
+--- Separate each components by '%='. see |'statusline'|.
 --- @param components StlpartsComponent[] |StlpartsComponent|
 --- @return StlpartsFunctionComponent # |StlpartsFunctionComponent|
 return function(components)

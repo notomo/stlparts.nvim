@@ -85,7 +85,7 @@ highlight({hl_group}, {component})            *stlparts.component.highlight()*
     (StlpartsFunctionComponent) |StlpartsFunctionComponent|
 
 separate({components})                         *stlparts.component.separate()*
-  Separate each components by '%='. see |statusline|.
+  Separate each components by '%='. see |'statusline'|.
 
   Parameters: ~
     {components} (StlpartsComponent[]) |StlpartsComponent|
