@@ -1,5 +1,5 @@
 local vim = vim
-local fn = vim.fn
+local truncate = require("stlparts.core.truncate")
 
 --- Truncate right string by window width.
 --- @param component StlpartsComponent Limitation: separate, highlight component does not work under truncate_right component.
@@ -9,7 +9,6 @@ return function(component, opts)
   opts = opts or {}
 
   local ellipsis = opts.ellipsis or ".."
-  local ellipsis_length = fn.strwidth(ellipsis)
 
   local get_max_width = opts.max_width or function(ctx)
     return ctx:width()
@@ -29,9 +28,8 @@ return function(component, opts)
 
     local result = evaled_str
     local max_width = get_max_width(ctx)
-    local width = evaled.width
-    if max_width < width then
-      result = fn.strpart(evaled_str, 0, math.floor(max_width - ellipsis_length)) .. ellipsis
+    if max_width < evaled.width then
+      result = truncate.right(evaled_str, max_width, ellipsis)
     end
 
     result = result:gsub("%%", "%%%%")
